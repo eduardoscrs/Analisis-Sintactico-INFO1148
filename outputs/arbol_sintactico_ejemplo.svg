@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6146 1511" width="6146" height="1511" style="background-color:#FAFAFA; font-family:Consolas, monospace;">
+<text x="3073.0" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#1A237E">Árbol Sintáctico LL(1) - CyberGuard DSL</text>
+<line x1="2986.0" y1="209.0" x2="115.0" y2="277.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1246.0" y1="633.0" x2="289.0" y2="701.0" stroke="#607D8B" stroke-width="2" />
+<line x1="637.0" y1="1163.0" x2="463.0" y2="1231.0" stroke="#607D8B" stroke-width="2" />
+<line x1="637.0" y1="1163.0" x2="637.0" y2="1231.0" stroke="#607D8B" stroke-width="2" />
+<line x1="811.0" y1="1269.0" x2="811.0" y2="1337.0" stroke="#607D8B" stroke-width="2" />
+<line x1="637.0" y1="1163.0" x2="811.0" y2="1231.0" stroke="#607D8B" stroke-width="2" />
+<line x1="637.0" y1="1057.0" x2="637.0" y2="1125.0" stroke="#607D8B" stroke-width="2" />
+<line x1="637.0" y1="951.0" x2="637.0" y2="1019.0" stroke="#607D8B" stroke-width="2" />
+<line x1="811.0" y1="845.0" x2="637.0" y2="913.0" stroke="#607D8B" stroke-width="2" />
+<line x1="985.0" y1="951.0" x2="985.0" y2="1019.0" stroke="#607D8B" stroke-width="2" />
+<line x1="811.0" y1="845.0" x2="985.0" y2="913.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1202.5" y1="739.0" x2="811.0" y2="807.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1594.0" y1="845.0" x2="1159.0" y2="913.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1507.0" y1="1269.0" x2="1333.0" y2="1337.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1507.0" y1="1269.0" x2="1507.0" y2="1337.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1681.0" y1="1375.0" x2="1681.0" y2="1443.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1507.0" y1="1269.0" x2="1681.0" y2="1337.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1507.0" y1="1163.0" x2="1507.0" y2="1231.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1507.0" y1="1057.0" x2="1507.0" y2="1125.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1681.0" y1="951.0" x2="1507.0" y2="1019.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1855.0" y1="1057.0" x2="1855.0" y2="1125.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1681.0" y1="951.0" x2="1855.0" y2="1019.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1594.0" y1="845.0" x2="1681.0" y2="913.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2029.0" y1="951.0" x2="2029.0" y2="1019.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1594.0" y1="845.0" x2="2029.0" y2="913.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1202.5" y1="739.0" x2="1594.0" y2="807.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1246.0" y1="633.0" x2="1202.5" y2="701.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1246.0" y1="633.0" x2="2203.0" y2="701.0" stroke="#607D8B" stroke-width="2" />
+<line x1="1246.0" y1="527.0" x2="1246.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2029.0" y1="421.0" x2="1246.0" y2="489.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2812.0" y1="527.0" x2="2377.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2725.0" y1="633.0" x2="2551.0" y2="701.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2899.0" y1="951.0" x2="2725.0" y2="1019.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2899.0" y1="951.0" x2="2899.0" y2="1019.0" stroke="#607D8B" stroke-width="2" />
+<line x1="3073.0" y1="1057.0" x2="3073.0" y2="1125.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2899.0" y1="951.0" x2="3073.0" y2="1019.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2899.0" y1="845.0" x2="2899.0" y2="913.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2899.0" y1="739.0" x2="2899.0" y2="807.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2725.0" y1="633.0" x2="2899.0" y2="701.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2812.0" y1="527.0" x2="2725.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="3247.0" y1="633.0" x2="3247.0" y2="701.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2812.0" y1="527.0" x2="3247.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2029.0" y1="421.0" x2="2812.0" y2="489.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2725.0" y1="315.0" x2="2029.0" y2="383.0" stroke="#607D8B" stroke-width="2" />
+<line x1="3421.0" y1="421.0" x2="3421.0" y2="489.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2725.0" y1="315.0" x2="3421.0" y2="383.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2986.0" y1="209.0" x2="2725.0" y2="277.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2986.0" y1="209.0" x2="3595.0" y2="277.0" stroke="#607D8B" stroke-width="2" />
+<line x1="3943.0" y1="421.0" x2="3769.0" y2="489.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4117.0" y1="527.0" x2="3943.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4117.0" y1="633.0" x2="4117.0" y2="701.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4117.0" y1="527.0" x2="4117.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4117.0" y1="527.0" x2="4291.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="3943.0" y1="421.0" x2="4117.0" y2="489.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4334.5" y1="315.0" x2="3943.0" y2="383.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4726.0" y1="421.0" x2="4465.0" y2="489.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4726.0" y1="527.0" x2="4639.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4813.0" y1="633.0" x2="4813.0" y2="701.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4726.0" y1="527.0" x2="4813.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4726.0" y1="421.0" x2="4726.0" y2="489.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4987.0" y1="527.0" x2="4987.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4726.0" y1="421.0" x2="4987.0" y2="489.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4334.5" y1="315.0" x2="4726.0" y2="383.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2986.0" y1="209.0" x2="4334.5" y2="277.0" stroke="#607D8B" stroke-width="2" />
+<line x1="5356.8" y1="315.0" x2="5161.0" y2="383.0" stroke="#607D8B" stroke-width="2" />
+<line x1="5422.0" y1="527.0" x2="5335.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="5509.0" y1="633.0" x2="5509.0" y2="701.0" stroke="#607D8B" stroke-width="2" />
+<line x1="5422.0" y1="527.0" x2="5509.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="5552.5" y1="421.0" x2="5422.0" y2="489.0" stroke="#607D8B" stroke-width="2" />
+<line x1="5683.0" y1="527.0" x2="5683.0" y2="595.0" stroke="#607D8B" stroke-width="2" />
+<line x1="5552.5" y1="421.0" x2="5683.0" y2="489.0" stroke="#607D8B" stroke-width="2" />
+<line x1="5356.8" y1="315.0" x2="5552.5" y2="383.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2986.0" y1="209.0" x2="5356.8" y2="277.0" stroke="#607D8B" stroke-width="2" />
+<line x1="2986.0" y1="209.0" x2="5857.0" y2="277.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4508.5" y1="103.0" x2="2986.0" y2="171.0" stroke="#607D8B" stroke-width="2" />
+<line x1="6031.0" y1="209.0" x2="6031.0" y2="277.0" stroke="#607D8B" stroke-width="2" />
+<line x1="4508.5" y1="103.0" x2="6031.0" y2="171.0" stroke="#607D8B" stroke-width="2" />
+<rect x="40.0" y="277.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="115.0" y="300.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">WHEN</text>
+<rect x="214.0" y="701.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="289.0" y="724.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">PARENT_IZQ: (</text>
+<rect x="388.0" y="1231.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="463.0" y="1254.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">ID: intentos_ssh</text>
+<rect x="562.0" y="1231.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="637.0" y="1254.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">OP_REL: &gt;</text>
+<rect x="736.0" y="1337.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="811.0" y="1360.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">NUM: 3</text>
+<rect x="736.0" y="1231.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="811.0" y="1254.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;valor&gt;</text>
+<rect x="562.0" y="1125.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="637.0" y="1148.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;comparacion&gt;</text>
+<rect x="562.0" y="1019.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="637.0" y="1042.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;primario&gt;</text>
+<rect x="562.0" y="913.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="637.0" y="936.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;factor_not&gt;</text>
+<rect x="910.0" y="1019.0" width="150" height="38" rx="7" ry="7" fill="#FFF8E1" stroke="#F57F17" stroke-width="2" />
+<text x="985.0" y="1042.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">ε</text>
+<rect x="910.0" y="913.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="985.0" y="936.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;resto_and&gt;</text>
+<rect x="736.0" y="807.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="811.0" y="830.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;termino_and&gt;</text>
+<rect x="1084.0" y="913.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="1159.0" y="936.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">OR</text>
+<rect x="1258.0" y="1337.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="1333.0" y="1360.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">ID: puerto_destino</text>
+<rect x="1432.0" y="1337.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="1507.0" y="1360.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">OP_REL: ==</text>
+<rect x="1606.0" y="1443.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="1681.0" y="1466.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">NUM: 22</text>
+<rect x="1606.0" y="1337.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="1681.0" y="1360.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;valor&gt;</text>
+<rect x="1432.0" y="1231.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="1507.0" y="1254.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;comparacion&gt;</text>
+<rect x="1432.0" y="1125.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="1507.0" y="1148.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;primario&gt;</text>
+<rect x="1432.0" y="1019.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="1507.0" y="1042.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;factor_not&gt;</text>
+<rect x="1780.0" y="1125.0" width="150" height="38" rx="7" ry="7" fill="#FFF8E1" stroke="#F57F17" stroke-width="2" />
+<text x="1855.0" y="1148.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">ε</text>
+<rect x="1780.0" y="1019.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="1855.0" y="1042.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;resto_and&gt;</text>
+<rect x="1606.0" y="913.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="1681.0" y="936.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;termino_and&gt;</text>
+<rect x="1954.0" y="1019.0" width="150" height="38" rx="7" ry="7" fill="#FFF8E1" stroke="#F57F17" stroke-width="2" />
+<text x="2029.0" y="1042.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">ε</text>
+<rect x="1954.0" y="913.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="2029.0" y="936.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;resto_or&gt;</text>
+<rect x="1519.0" y="807.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="1594.0" y="830.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;resto_or&gt;</text>
+<rect x="1127.5" y="701.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="1202.5" y="724.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;condicion&gt;</text>
+<rect x="2128.0" y="701.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="2203.0" y="724.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">PARENT_DER: )</text>
+<rect x="1171.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="1246.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;primario&gt;</text>
+<rect x="1171.0" y="489.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="1246.0" y="512.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;factor_not&gt;</text>
+<rect x="2302.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="2377.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">AND</text>
+<rect x="2476.0" y="701.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="2551.0" y="724.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">NOT</text>
+<rect x="2650.0" y="1019.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="2725.0" y="1042.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">ID: ip_confiable</text>
+<rect x="2824.0" y="1019.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="2899.0" y="1042.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">OP_REL: ==</text>
+<rect x="2998.0" y="1125.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="3073.0" y="1148.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">TRUE</text>
+<rect x="2998.0" y="1019.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="3073.0" y="1042.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;valor&gt;</text>
+<rect x="2824.0" y="913.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="2899.0" y="936.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;comparacion&gt;</text>
+<rect x="2824.0" y="807.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="2899.0" y="830.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;primario&gt;</text>
+<rect x="2824.0" y="701.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="2899.0" y="724.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;factor_not&gt;</text>
+<rect x="2650.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="2725.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;factor_not&gt;</text>
+<rect x="3172.0" y="701.0" width="150" height="38" rx="7" ry="7" fill="#FFF8E1" stroke="#F57F17" stroke-width="2" />
+<text x="3247.0" y="724.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">ε</text>
+<rect x="3172.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="3247.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;resto_and&gt;</text>
+<rect x="2737.0" y="489.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="2812.0" y="512.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;resto_and&gt;</text>
+<rect x="1954.0" y="383.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="2029.0" y="406.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;termino_and&gt;</text>
+<rect x="3346.0" y="489.0" width="150" height="38" rx="7" ry="7" fill="#FFF8E1" stroke="#F57F17" stroke-width="2" />
+<text x="3421.0" y="512.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">ε</text>
+<rect x="3346.0" y="383.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="3421.0" y="406.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;resto_or&gt;</text>
+<rect x="2650.0" y="277.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="2725.0" y="300.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;condicion&gt;</text>
+<rect x="3520.0" y="277.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="3595.0" y="300.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">THEN</text>
+<rect x="3694.0" y="489.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="3769.0" y="512.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">ID: bloquear_ip</text>
+<rect x="3868.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="3943.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">PARENT_IZQ: (</text>
+<rect x="4042.0" y="701.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="4117.0" y="724.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">ID: ip_origen</text>
+<rect x="4042.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="4117.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;valor&gt;</text>
+<rect x="4216.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="4291.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">PARENT_DER: )</text>
+<rect x="4042.0" y="489.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="4117.0" y="512.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;complemento_accion&gt;</text>
+<rect x="3868.0" y="383.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="3943.0" y="406.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;accion&gt;</text>
+<rect x="4390.0" y="489.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="4465.0" y="512.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">COMA: ,</text>
+<rect x="4564.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="4639.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">ID: alertar</text>
+<rect x="4738.0" y="701.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="4813.0" y="724.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">ID: soc_admin</text>
+<rect x="4738.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="4813.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;complemento_accion&gt;</text>
+<rect x="4651.0" y="489.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="4726.0" y="512.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;accion&gt;</text>
+<rect x="4912.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#FFF8E1" stroke="#F57F17" stroke-width="2" />
+<text x="4987.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">ε</text>
+<rect x="4912.0" y="489.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="4987.0" y="512.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;resto_acciones&gt;</text>
+<rect x="4651.0" y="383.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="4726.0" y="406.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;resto_acciones&gt;</text>
+<rect x="4259.5" y="277.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="4334.5" y="300.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;lista_acciones&gt;</text>
+<rect x="5086.0" y="383.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="5161.0" y="406.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">ELSE</text>
+<rect x="5260.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="5335.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">ID: registrar_acceso</text>
+<rect x="5434.0" y="701.0" width="150" height="38" rx="7" ry="7" fill="#FFF8E1" stroke="#F57F17" stroke-width="2" />
+<text x="5509.0" y="724.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">ε</text>
+<rect x="5434.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="5509.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;complemento_accion&gt;</text>
+<rect x="5347.0" y="489.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="5422.0" y="512.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;accion&gt;</text>
+<rect x="5608.0" y="595.0" width="150" height="38" rx="7" ry="7" fill="#FFF8E1" stroke="#F57F17" stroke-width="2" />
+<text x="5683.0" y="618.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">ε</text>
+<rect x="5608.0" y="489.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="5683.0" y="512.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;resto_acciones&gt;</text>
+<rect x="5477.5" y="383.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="5552.5" y="406.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;lista_acciones&gt;</text>
+<rect x="5281.8" y="277.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="5356.8" y="300.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;clausula_else&gt;</text>
+<rect x="5782.0" y="277.0" width="150" height="38" rx="7" ry="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2" />
+<text x="5857.0" y="300.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1B5E20">PUNTO_COMA: ;</text>
+<rect x="2911.0" y="171.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="2986.0" y="194.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;regla&gt;</text>
+<rect x="5956.0" y="277.0" width="150" height="38" rx="7" ry="7" fill="#FFF8E1" stroke="#F57F17" stroke-width="2" />
+<text x="6031.0" y="300.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">ε</text>
+<rect x="5956.0" y="171.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="6031.0" y="194.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;resto_programa&gt;</text>
+<rect x="4433.5" y="65.0" width="150" height="38" rx="7" ry="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="2" />
+<text x="4508.5" y="88.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#0D47A1">&lt;programa&gt;</text>
+</svg>
