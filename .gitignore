@@ -5,3 +5,10 @@ __pycache__/
 .venv/
 venv/
 .DS_Store
+
+# Informe LaTeX (se compila en Overleaf)
+docs/*.tex
+*.aux
+*.log
+*.out
+*.toc
