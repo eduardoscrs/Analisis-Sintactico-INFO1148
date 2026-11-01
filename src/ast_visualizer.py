@@ -105,10 +105,15 @@ def guardar_arbol_svg(nodo: NodoSintactico, ruta_archivo: str, titulo: str = "Á
     Genera y guarda una imagen vectorial SVG de alta calidad del árbol sintáctico o AST,
     calculando automáticamente las posiciones de cada subárbol sin dependencias externas.
     """
-    ancho_nodo = 150
+    ancho_minimo = 100
+    px_por_caracter = 8.0
     alto_nodo = 38
     espacio_x = 24
     espacio_y = 68
+
+    def ancho_de(n: NodoSintactico) -> float:
+        # El ancho de cada caja se ajusta a su etiqueta (fuente monoespaciada en negrita de 12 px).
+        return max(float(ancho_minimo), len(formatear_etiqueta(n)) * px_por_caracter + 24.0)
 
     posiciones: Dict[int, Tuple[float, float, NodoSintactico]] = {}
     aristas: List[Tuple[int, int]] = []
@@ -120,8 +125,9 @@ def guardar_arbol_svg(nodo: NodoSintactico, ruta_archivo: str, titulo: str = "Á
         contador[0] += 1
 
         if not actual.hijos:
-            x = cursor_hoja[0] * (ancho_nodo + espacio_x)
-            cursor_hoja[0] += 1.0
+            w = ancho_de(actual)
+            x = cursor_hoja[0] + w / 2.0  # x es el centro horizontal del nodo
+            cursor_hoja[0] += w + espacio_x
         else:
             xs_hijos: List[float] = []
             for hijo in actual.hijos:
@@ -138,7 +144,7 @@ def guardar_arbol_svg(nodo: NodoSintactico, ruta_archivo: str, titulo: str = "Á
 
     margen_x = 40
     margen_y = 65
-    max_x = max(pos[0] for pos in posiciones.values()) + ancho_nodo + margen_x * 2
+    max_x = max(pos[0] + ancho_de(pos[2]) / 2.0 for pos in posiciones.values()) + margen_x * 2
     max_y = max(pos[1] for pos in posiciones.values()) + alto_nodo + margen_y + 30
 
     ancho_svg = max(int(max_x), 500)
@@ -155,9 +161,9 @@ def guardar_arbol_svg(nodo: NodoSintactico, ruta_archivo: str, titulo: str = "Á
     for id_padre, id_hijo in aristas:
         px, py, _ = posiciones[id_padre]
         hx, hy, _ = posiciones[id_hijo]
-        x1 = px + margen_x + ancho_nodo / 2
+        x1 = px + margen_x
         y1 = py + margen_y + alto_nodo
-        x2 = hx + margen_x + ancho_nodo / 2
+        x2 = hx + margen_x
         y2 = hy + margen_y
         elementos_svg.append(
             f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" '
@@ -166,7 +172,8 @@ def guardar_arbol_svg(nodo: NodoSintactico, ruta_archivo: str, titulo: str = "Á
 
     # Dibujar nodos
     for _, (x, y, nod) in posiciones.items():
-        rx = x + margen_x
+        ancho_nodo = ancho_de(nod)
+        rx = x + margen_x - ancho_nodo / 2.0
         ry = y + margen_y
         es_hoja = len(nod.hijos) == 0
         es_epsilon = nod.etiqueta == 'ε'
@@ -186,7 +193,7 @@ def guardar_arbol_svg(nodo: NodoSintactico, ruta_archivo: str, titulo: str = "Á
 
         etiqueta = html.escape(formatear_etiqueta(nod))
         elementos_svg.append(
-            f'<rect x="{rx:.1f}" y="{ry:.1f}" width="{ancho_nodo}" height="{alto_nodo}" '
+            f'<rect x="{rx:.1f}" y="{ry:.1f}" width="{ancho_nodo:.1f}" height="{alto_nodo}" '
             f'rx="7" ry="7" fill="{fill}" stroke="{stroke}" stroke-width="2" />'
         )
         elementos_svg.append(
