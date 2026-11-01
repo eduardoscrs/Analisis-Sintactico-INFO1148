@@ -27,10 +27,11 @@ Analisis-Sintactico-INFO1148/
 │   └── test_suite.py                      # 30 casos de prueba automatizados (12V, 12I, 6L)
 ├── notebooks/                             # Notebooks interactivos
 │   └── anlizador_lexico1.ipynb            # Notebook con todo el flujo ejecutado
-├── docs/                                  # Documentación e informe técnico
-│   ├── INFORME_PROYECTO.md                # Informe completo (12 secciones de la pauta)
+├── docs/                                  # Enunciado, rúbrica y material del informe
 │   ├── Proyecto Analisis_Sintactico.pdf   # Enunciado oficial del proyecto
-│   └── Rubrica_Proyecto.pdf               # Rúbrica oficial de evaluación
+│   ├── Rubrica_Proyecto.pdf               # Rúbrica oficial de evaluación
+│   └── capturas/                          # Capturas de la demostración (anexo del informe)
+├── Ferrer_Christian_Proyecto_INFO1148.pdf # Informe final del proyecto
 └── outputs/                               # Árboles sintácticos y AST generados
     ├── ast_ejemplo.svg
     ├── ast_ejemplo.dot
