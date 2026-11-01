@@ -1,6 +1,8 @@
 # TEORÍA DE LA COMPUTACIÓN – INFO1148
 ## Informe de Proyecto: Diseño e Implementación de un Analizador Sintáctico LL(1) para **CyberGuard DSL**
 
+**Integrantes:** Christián Ferrer Retamal, Eduardo Escares Ortiz y Patricio Benavides Monsálvez.
+
 ---
 
 ## 1. Introducción y Dominio Seleccionado
@@ -218,7 +220,24 @@ El sistema se diseñó en Python siguiendo una arquitectura modular sin emplear 
    - `ParserDescensoRecursivo`: Un método por cada uno de los 16 no terminales (`parse_programa`, `parse_regla`, `parse_condicion`, etc.), que decide qué producción expandir consultando únicamente el token de preanálisis (`self.token_actual`, *lookahead* $k=1$) y construye simultáneamente el **Árbol Sintáctico Concreto** y el **AST**.
    - `ParserTablaLL1`: Analizador predictivo no recursivo basado en una pila explícita y la tabla $M[A, a]$.
 4. **`ast_visualizer.py`**: Genera representaciones en texto jerárquico (`├──`, `└──`), código Graphviz (`.dot`), diagramas Mermaid y gráficos vectoriales `.svg`.
-5. **`tests.py` y `main.py`**: Suite automatizada con 30 casos de prueba y CLI de demostración.
+5. **`tests/test_suite.py` y `main.py`**: Suite automatizada con 30 casos de prueba y CLI de demostración.
+
+### 7.1 Relación entre la gramática y el código
+
+| Producciones | Método de `ParserDescensoRecursivo` | Decisión con el token actual |
+| :--- | :--- | :--- |
+| (01)–(02) `<programa>`, `<resto_programa>` | `parse_programa`, `parse_resto_programa` | `WHEN`: otra regla; `$`: fin. |
+| (03) `<regla>` | `parse_regla` | Consume `WHEN`, condición, `THEN`, acciones, `ELSE` opcional y `;`. |
+| (04)–(05) `<condicion>`, `<resto_or>` | `parse_condicion`, `parse_resto_or` | Mientras sea `OR`, continúa; con `)` o `THEN` aplica ε. |
+| (06)–(07) `<termino_and>`, `<resto_and>` | `parse_termino_and`, `parse_resto_and` | Mientras sea `AND`, continúa; con `OR`, `)` o `THEN` aplica ε. |
+| (08) `<factor_not>` | `parse_factor_not` | `NOT`: recursión; `ID` o `(`: delega en `<primario>`. |
+| (09) `<primario>` | `parse_primario` | `(`: agrupación; `ID`: comparación. |
+| (10)–(11) `<comparacion>`, `<valor>` | `parse_comparacion`, `parse_valor` | `ID`, `OP_REL` y luego `NUM`, `TRUE`, `FALSE` o `ID`. |
+| (12)–(13) `<lista_acciones>`, `<resto_acciones>` | `parse_lista_acciones`, `parse_resto_acciones` | Mientras sea `COMA`, continúa; con `ELSE` o `;` aplica ε. |
+| (14)–(15) `<accion>`, `<complemento_accion>` | `parse_accion`, `parse_complemento_accion` | `ID`: objeto; `(`: parámetro; `COMA`, `ELSE` o `;`: ε. |
+| (16) `<clausula_else>` | `parse_clausula_else` | `ELSE`: lista de acciones; `;`: ε. |
+
+`ParserTablaLL1` usa directamente la tabla `M[A, a]`; sus resultados de aceptación y rechazo coinciden con los esperados en los 30 casos de prueba.
 
 ---
 
@@ -295,7 +314,7 @@ El analizador sintáctico y léxico reporta errores detallados indicando **qué 
 - **Falta de valor tras operador relacional:**
   > `Error sintáctico: se esperaba un valor (NUM, TRUE, FALSE o ID) después del operador >, pero se encontró 'THEN' [cerca de la posición 4 (línea 1, columna 23)].`
 - **Omisión de la palabra reservada `THEN`:**
-  > `Error sintáctico: se esperaba la palabra reservada THEN o un operador lógico (AND, OR) antes de 'bloquear' cerca de la posición 5 [cerca de la posición 5 (línea 1, columna 25)].`
+  > `Error sintáctico: se esperaba la palabra reservada THEN o un operador lógico (AND, OR) antes de 'bloquear' [cerca de la posición 5 (línea 1, columna 25)].`
 - **Paréntesis desbalanceado:**
   > `Error sintáctico: se esperaba el paréntesis de cierre ')' para cerrar la agrupación [cerca de la posición 10 (línea 1, columna 43)].`
 - **Omisión de punto y coma `;` al final de la regla:**
@@ -316,36 +335,36 @@ Se integraron **cuatro extensiones creativas** directamente en la gramática LL(
 
 | ID | Categoría | Entrada | Resultado Esperado | Resultado Obtenido | Observación / Mensaje del Analizador |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **V01** | Válida | `WHEN intentos_login > 5 THEN bloquear ip_origen;` | Aceptada | Aceptada | Regla simple de fuerza bruta con operador `>` y acción verbo-objeto. |
-| **V02** | Válida | `WHEN puerto_destino == 22 AND ip_verificada == FALSE THEN cerrar_puerto(22);` | Aceptada | Aceptada | Condición compuesta con `AND`, booleano `FALSE` y acción con parámetro numérico. |
-| **V03** | Válida | `WHEN trafico_mb >= 1000 OR conexiones_activas >= 500 THEN limitar_ancho_banda(100), alertar soc_admin;` | Aceptada | Aceptada | Operador `OR` y múltiples acciones separadas por coma. |
-| **V04** | Válida | `WHEN NOT firewall_activo == TRUE THEN activar firewall_perimetral, registrar_incidente;` | Aceptada | Aceptada | Uso del operador unario `NOT` y combinación de acción con objeto y acción simple. |
-| **V05** | Válida | `WHEN (intentos_ssh > 3 OR intentos_rdp > 3) AND ip_interna == FALSE THEN aislar_host(ip_origen) ELSE registrar_acceso;` | Aceptada | Aceptada | Agrupación con paréntesis, precedencia `OR`/`AND` y cláusula `ELSE`. |
-| **V06** | Válida | `WHEN nivel_amenaza != 0 THEN bloquear_ip(ip_atacante), cerrar_puerto(445), notificar_admin(TRUE);` | Aceptada | Aceptada | Tres acciones encadenadas con parámetros `ID`, `NUM` y `TRUE`. |
-| **V07** | Válida | `WHEN paquetes_syn > 10000 AND NOT (ip_whitelist == TRUE OR modo_mantenimiento == TRUE) THEN activar_mitigacion_ddos;` | Aceptada | Aceptada | Negación `NOT` aplicada sobre una agrupación entre paréntesis. |
-| **V08** | Válida | `WHEN latencia_ms <= 50 AND perdida_paquetes < 2 THEN mantener_ruta_principal ELSE conmutar_respaldo;` | Aceptada | Aceptada | Operadores relacionales `<=` y `<` con rama `ELSE`. |
-| **V09** | Válida | `WHEN firma_malware == TRUE THEN poner_cuarentena archivo_sospechoso; WHEN riesgo_fuga >= 80 THEN bloquear_puerto(21);` | Aceptada | Aceptada | Programa compuesto por múltiples reglas consecutivas. |
-| **V10** | Válida | `WHEN payload_sql == TRUE OR (cabecera_xss == TRUE AND waf_activo == FALSE) THEN rechazar_peticion, bloquear_ip(cliente_http);` | Aceptada | Aceptada | Expresión anidada en segundo operando de `OR` con acciones múltiples. |
-| **V11** | Válida | `WHEN certificado_vencido == TRUE THEN redirigir_trafico(443) ELSE permitir_conexion(80);` | Aceptada | Aceptada | Acciones parametrizadas tanto en `THEN` como en `ELSE`. |
-| **V12** | Válida | `WHEN temperatura > 28 AND humedad < 40 THEN encender ventilador;` | Aceptada | Aceptada | Compatibilidad con la sentencia de prueba del notebook base. |
-| **I01** | Inválida | `intentos_login > 5 THEN bloquear ip_origen;` | Rechazada | Rechazada | `Error sintáctico: se esperaba la palabra reservada WHEN al inicio de la regla...` |
-| **I02** | Inválida | `WHEN intentos_login > THEN bloquear ip_origen;` | Rechazada | Rechazada | `Error sintáctico: se esperaba un valor (NUM, TRUE, FALSE o ID) después del operador >...` |
-| **I03** | Inválida | `WHEN intentos_login > 5 bloquear ip_origen;` | Rechazada | Rechazada | `Error sintáctico: se esperaba la palabra reservada THEN o un operador lógico (AND, OR)...` |
-| **I04** | Inválida | `WHEN intentos_login > 5 THEN bloquear ip_origen` | Rechazada | Rechazada | `Error sintáctico: se esperaba ';' al final de la regla antes de finalizar la entrada...` |
-| **I05** | Inválida | `WHEN intentos_login 5 THEN bloquear ip_origen;` | Rechazada | Rechazada | `Error sintáctico: se esperaba un operador relacional (>, <, >=, <=, ==, !=)...` |
-| **I06** | Inválida | `WHEN (intentos_login > 5 AND puerto == 22 THEN bloquear ip_origen;` | Rechazada | Rechazada | `Error sintáctico: se esperaba el paréntesis de cierre ')' para cerrar la agrupación...` |
-| **I07** | Inválida | `WHEN intentos_login > 5 AND THEN bloquear ip_origen;` | Rechazada | Rechazada | `Error sintáctico: se esperaba una condición (identificador, NOT o '(') después de 'AND'...` |
-| **I08** | Inválida | `WHEN intentos_login > 5 THEN ;` | Rechazada | Rechazada | `Error sintáctico: se esperaba un identificador de acción después de 'THEN'...` |
-| **I09** | Inválida | `WHEN intentos_login > 5 THEN bloquear_puerto();` | Rechazada | Rechazada | `Error sintáctico: se esperaba un parámetro dentro de 'bloquear_puerto(...)' antes de ')'...` |
-| **I10** | Inválida | `WHEN intentos_login > 5 THEN bloquear ip_origen, ;` | Rechazada | Rechazada | `Error sintáctico: se esperaba un identificador de acción después de ','...` |
-| **I11** | Inválida | `WHEN intentos_login > 5 THEN bloquear ip_origen ELSE ;` | Rechazada | Rechazada | `Error sintáctico: se esperaba un identificador de acción después de 'ELSE'...` |
-| **I12** | Inválida | `WHEN intentos_login > 5 @ puerto == 22 THEN bloquear ip_origen;` | Rechazada | Rechazada | `Error léxico en línea 1, columna 25 (posición 5): símbolo no reconocido '@'.` |
-| **L01** | Caso Límite | `""` *(cadena vacía)* | Rechazada | Rechazada | `Error sintáctico: la entrada está vacía; se esperaba al menos una regla iniciada con WHEN...` |
-| **L02** | Caso Límite | `((WHEN ((puerto == 80)) THEN auditar));` | Rechazada | Rechazada | Los paréntesis solo agrupan condiciones, no la sentencia `WHEN` completa. |
-| **L03** | Caso Límite | `WHEN (((NOT NOT alerta_critica == TRUE))) THEN aislar_nodo;` | Aceptada | Aceptada | Triple anidamiento de paréntesis y doble negación recursiva `NOT NOT`. |
-| **L04** | Caso Límite | `when trafico_mb > 0 then registrar_log;` | Aceptada | Aceptada | Palabras reservadas en minúsculas reconocidas correctamente. |
-| **L05** | Caso Límite | `# Comentario\nWHEN puerto == 443 THEN permitir_tls; // Fin` | Aceptada | Aceptada | Programa multilínea con comentarios `#` y `//` intercalados. |
-| **L06** | Caso Límite | `WHEN a == b AND c != d AND e >= f OR g <= h THEN acc1, acc2(1), acc3 obj3, acc4(TRUE) ELSE acc5;` | Aceptada | Aceptada | Combinación máxima de todos los operadores, tipos de acciones y rama `ELSE`. |
+| **V01** | Válida | `WHEN intentos_login > 5 THEN bloquear ip_origen;` | Aceptada | Aceptada | Regla simple de fuerza bruta con operador '>' y acción verbo-objeto. |
+| **V02** | Válida | `WHEN puerto_destino == 22 AND ip_verificada == FALSE THEN cerrar_puerto(22);` | Aceptada | Aceptada | Condición compuesta con AND, valor booleano FALSE y acción con parámetro numérico. |
+| **V03** | Válida | `WHEN trafico_mb >= 1000 OR conexiones_activas >= 500 THEN limitar_ancho_banda(100), alertar soc_admin;` | Aceptada | Aceptada | Operador OR y múltiples acciones separadas por coma (extensión creativa). |
+| **V04** | Válida | `WHEN NOT firewall_activo == TRUE THEN activar firewall_perimetral, registrar_incidente;` | Aceptada | Aceptada | Uso del operador unario NOT y combinación de acción con objeto y acción simple. |
+| **V05** | Válida | `WHEN (intentos_ssh > 3 OR intentos_rdp > 3) AND ip_interna == FALSE THEN aislar_host(ip_origen) ELSE registrar_acceso;` | Aceptada | Aceptada | Agrupación con paréntesis, precedencia OR/AND y cláusula condicional ELSE. |
+| **V06** | Válida | `WHEN nivel_amenaza != 0 THEN bloquear_ip(ip_atacante), cerrar_puerto(445), notificar_admin(TRUE);` | Aceptada | Aceptada | Tres acciones encadenadas con parámetros de tipo ID, NUM y booleano TRUE. |
+| **V07** | Válida | `WHEN paquetes_syn > 10000 AND NOT (ip_whitelist == TRUE OR modo_mantenimiento == TRUE) THEN activar_mitigacion_ddos;` | Aceptada | Aceptada | Negación NOT aplicada sobre una agrupación entre paréntesis. |
+| **V08** | Válida | `WHEN latencia_ms <= 50 AND perdida_paquetes < 2 THEN mantener_ruta_principal ELSE conmutar_respaldo;` | Aceptada | Aceptada | Operadores relacionales '<=' y '<' con rama ELSE. |
+| **V09** | Válida | `WHEN firma_malware == TRUE THEN poner_cuarentena archivo_sospechoso; WHEN riesgo_fuga >= 80 THEN bloquear_puerto(21);` | Aceptada | Aceptada | Programa compuesto por múltiples reglas consecutivas en secuencia. |
+| **V10** | Válida | `WHEN payload_sql == TRUE OR (cabecera_xss == TRUE AND waf_activo == FALSE) THEN rechazar_peticion, bloquear_ip(cliente_http);` | Aceptada | Aceptada | Expresión anidada en segundo operando de OR con acciones múltiples. |
+| **V11** | Válida | `WHEN certificado_vencido == TRUE THEN redirigir_trafico(443) ELSE permitir_conexion(80);` | Aceptada | Aceptada | Acciones parametrizadas tanto en la rama THEN como en la rama ELSE. |
+| **V12** | Válida | `WHEN temperatura > 28 AND humedad < 40 THEN encender ventilador;` | Aceptada | Aceptada | Compatibilidad retroactiva con la sentencia de prueba original del notebook base. |
+| **I01** | Inválida | `intentos_login > 5 THEN bloquear ip_origen;` | Rechazada | Rechazada | Error sintáctico: se esperaba la palabra reservada WHEN al inicio de la regla, pero se encontró 'intentos_login' [cerca de la posición 1 (línea 1, columna 1)]. |
+| **I02** | Inválida | `WHEN intentos_login > THEN bloquear ip_origen;` | Rechazada | Rechazada | Error sintáctico: se esperaba un valor (NUM, TRUE, FALSE o ID) después del operador >, pero se encontró 'THEN' [cerca de la posición 4 (línea 1, columna 23)]. |
+| **I03** | Inválida | `WHEN intentos_login > 5 bloquear ip_origen;` | Rechazada | Rechazada | Error sintáctico: se esperaba la palabra reservada THEN o un operador lógico (AND, OR) antes de 'bloquear' [cerca de la posición 5 (línea 1, columna 25)]. |
+| **I04** | Inválida | `WHEN intentos_login > 5 THEN bloquear ip_origen` | Rechazada | Rechazada | Error sintáctico: se esperaba ';' al final de la regla antes de finalizar la entrada [al final de la entrada (posición 8, línea 1)]. |
+| **I05** | Inválida | `WHEN intentos_login 5 THEN bloquear ip_origen;` | Rechazada | Rechazada | Error sintáctico: se esperaba un operador relacional (>, <, >=, <=, ==, !=) después del identificador 'intentos_login', pero se encontró '5' [cerca de la posición 3 (línea 1, columna 21)]. |
+| **I06** | Inválida | `WHEN (intentos_login > 5 AND puerto == 22 THEN bloquear ip_origen;` | Rechazada | Rechazada | Error sintáctico: se esperaba el paréntesis de cierre ')' para cerrar la agrupación [cerca de la posición 10 (línea 1, columna 43)]. |
+| **I07** | Inválida | `WHEN intentos_login > 5 AND THEN bloquear ip_origen;` | Rechazada | Rechazada | Error sintáctico: se esperaba una condición (identificador, NOT o '(') después de 'AND', pero se encontró 'THEN' [cerca de la posición 6 (línea 1, columna 29)]. |
+| **I08** | Inválida | `WHEN intentos_login > 5 THEN ;` | Rechazada | Rechazada | Error sintáctico: se esperaba un identificador de acción después de 'THEN', pero se encontró ';' [cerca de la posición 6 (línea 1, columna 30)]. |
+| **I09** | Inválida | `WHEN intentos_login > 5 THEN bloquear_puerto();` | Rechazada | Rechazada | Error sintáctico: se esperaba un parámetro dentro de 'bloquear_puerto(...)' antes de ')' [cerca de la posición 8 (línea 1, columna 46)]. |
+| **I10** | Inválida | `WHEN intentos_login > 5 THEN bloquear ip_origen, ;` | Rechazada | Rechazada | Error sintáctico: se esperaba un identificador de acción después de ',', pero se encontró ';' [cerca de la posición 9 (línea 1, columna 50)]. |
+| **I11** | Inválida | `WHEN intentos_login > 5 THEN bloquear ip_origen ELSE ;` | Rechazada | Rechazada | Error sintáctico: se esperaba un identificador de acción después de 'ELSE', pero se encontró ';' [cerca de la posición 9 (línea 1, columna 54)]. |
+| **I12** | Inválida | `WHEN intentos_login > 5 @ puerto == 22 THEN bloquear ip_origen;` | Rechazada | Rechazada | Error léxico en línea 1, columna 25 (posición 5): símbolo no reconocido '@'. |
+| **L01** | Caso Límite | `""` *(cadena vacía)* | Rechazada | Rechazada | Error sintáctico: la entrada está vacía; se esperaba al menos una regla iniciada con la palabra reservada WHEN [al final de la entrada (posición 1, línea 1)]. |
+| **L02** | Caso Límite | `((WHEN ((puerto == 80)) THEN auditar));` | Rechazada | Rechazada | Error sintáctico: se esperaba la palabra reservada WHEN al inicio de la regla, pero se encontró '(' [cerca de la posición 1 (línea 1, columna 1)]. |
+| **L03** | Caso Límite | `WHEN (((NOT NOT alerta_critica == TRUE))) THEN aislar_nodo;` | Aceptada | Aceptada | Caso límite válido: triple anidamiento de paréntesis y doble negación recursiva NOT NOT. |
+| **L04** | Caso Límite | `when trafico_mb > 0 then registrar_log;` | Aceptada | Aceptada | Caso límite válido: palabras reservadas en minúsculas (insensibilidad a mayúsculas/minúsculas). |
+| **L05** | Caso Límite | `# Regla comentada\nWHEN puerto == 443 THEN permitir_tls; // Comentario final` | Aceptada | Aceptada | Caso límite válido: programa multilínea con comentarios '#' y '//' intercalados. |
+| **L06** | Caso Límite | `WHEN a == b AND c != d AND e >= f OR g <= h THEN acc1, acc2(1), acc3 obj3, acc4(TRUE) ELSE acc5;` | Aceptada | Aceptada | Caso límite válido: combinación máxima de todos los operadores, tipos de acciones y rama ELSE. |
 
 ---
 
@@ -353,10 +372,15 @@ Se integraron **cuatro extensiones creativas** directamente en la gramática LL(
 
 1. **Coherencia entre Teoría Formal e Implementación:** El diseño de **CyberGuard DSL** demostró cómo las propiedades algebraicas de una Gramática Libre de Contexto impactan directamente en la construcción de un analizador sintáctico determinista. La estratificación de niveles de precedencia (`OR` $\to$ `AND` $\to$ `NOT` $\to$ `()`), combinada con la eliminación de recursión izquierda y la factorización por la izquierda, permitió obtener una tabla predictiva **LL(1) con 0 conflictos**.
 2. **Modularidad y Diagnóstico de Errores:** La separación entre tokenización con coordenadas (`lexer.py`), análisis formal (`grammar_ll1.py`), reconocimiento sintáctico (`parser.py`) y visualización (`ast_visualizer.py`) facilitó tanto la generación de árboles sintácticos y AST como la entrega de mensajes de error precisos y localizados.
+3. **Dos parsers equivalentes:** implementar el descenso recursivo y el parser dirigido por tabla sobre la misma gramática permitió contrastar ambos enfoques.
+4. **Limitaciones:** solo enteros no negativos, sin cadenas ni expresiones aritméticas. Como mejoras futuras: operadores aritméticos, cadenas (IP literales) y recuperación de errores para informar varios errores por ejecución.
 
 ---
 
 ## 12. Anexos
+
+### Repositorio
+Código fuente, README, archivos auxiliares y salidas: https://github.com/eduardoscrs/Analisis-Sintactico-INFO1148
 
 ### Archivos del Proyecto y Estructura del Repositorio
 - `src/lexer.py`: Analizador léxico con soporte de metadatos de posición y comentarios.

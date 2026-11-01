@@ -152,7 +152,7 @@ class ParserDescensoRecursivo:
         if self.token_actual.tipo != EOF:
             tok = self.token_actual
             raise self._error(
-                f"símbolo inesperado '{tok.lexema}' cerca de la posición {tok.posicion}; "
+                f"símbolo inesperado '{tok.lexema}'; "
                 f"se esperaba la palabra reservada WHEN para iniciar una nueva regla o el fin del programa",
                 esperado="WHEN / $",
             )
@@ -167,7 +167,7 @@ class ParserDescensoRecursivo:
             tok = self.token_actual
             raise self._error(
                 f"se esperaba la palabra reservada WHEN al inicio de la regla, "
-                f"pero se encontró '{tok.lexema}' cerca de la posición {tok.posicion}",
+                f"pero se encontró '{tok.lexema}'",
                 esperado="WHEN",
             )
         hijo_regla, ast_regla = self.parse_regla()
@@ -191,7 +191,7 @@ class ParserDescensoRecursivo:
         else:
             tok = self.token_actual
             raise self._error(
-                f"símbolo inesperado '{tok.lexema}' cerca de la posición {tok.posicion}; "
+                f"símbolo inesperado '{tok.lexema}'; "
                 f"se esperaba la palabra reservada WHEN para una nueva regla o fin de programa",
                 esperado="WHEN",
             )
@@ -214,12 +214,12 @@ class ParserDescensoRecursivo:
             if tok.tipo in ('ID', 'NUM', 'TRUE', 'FALSE', 'PARENT_IZQ', 'NOT'):
                 raise self._error(
                     f"se esperaba la palabra reservada THEN o un operador lógico (AND, OR) "
-                    f"antes de '{tok.lexema}' cerca de la posición {tok.posicion}",
+                    f"antes de '{tok.lexema}'",
                     esperado="THEN / AND / OR",
                 )
             elif tok.tipo == 'PARENT_DER':
                 raise self._error(
-                    f"paréntesis de cierre ')' sin abrir cerca de la posición {tok.posicion}",
+                    f"paréntesis de cierre ')' sin abrir",
                     esperado="THEN",
                 )
             raise self._error(
@@ -249,7 +249,7 @@ class ParserDescensoRecursivo:
                     esperado="PUNTO_COMA (;)",
                 )
             raise self._error(
-                f"símbolo inesperado '{tok.lexema}' cerca de la posición {tok.posicion}; "
+                f"símbolo inesperado '{tok.lexema}'; "
                 f"se esperaba ';' para cerrar la regla o ',' para separar múltiples acciones",
                 esperado="PUNTO_COMA (;)",
             )
